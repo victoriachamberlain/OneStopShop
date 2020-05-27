@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 from django.utils.dateparse import parse_date
 import re
+from productsApp import *
 
 class UserManager(models.Manager):
     def registration_validation(self, postData):
@@ -92,6 +93,8 @@ class User(models.Model):
     birth_date = models.DateField()
     password = models.CharField(max_length = 200)
 
+    # one to one relationships with wishlist and shopping cart
+    # one to many relationhip with order
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
