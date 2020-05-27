@@ -1,6 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
-from productsApp.models import *
 
 def showLogin(request):
     return HttpResponse('admin login page') # render admin login page
