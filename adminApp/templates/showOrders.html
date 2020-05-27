@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>OneStopShop Admin</title>
+    <title>Orders Dashboard</title>
 </head>
 <body>
     <div class="container">
@@ -22,7 +22,7 @@
                     <p>Orders</p>
                 </div>
                 <div class="col-sm-4">
-                    <a href="/manage_products">Products</a>
+                    <a href="/showProducts">Products</a>
                 </div>
                 <div class="col-sm-4">
                     <a href="/logoff">Log Off</a>
@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
                     <tr>   
-                            <td><a href="">100</td>
+                            <td><a href="/orders/show/<int:orderID>">100</td>
                             <td>Bob</td>
                             <td>9/6/2020</td>
                             <td>123 dojo way Belleveue WA 98005</td>
@@ -68,7 +68,7 @@
                             </div></td>
                     </tr>
                     <tr>
-                            <td><a href="">99</td>
+                            <td><a href="/orders/show/<int:orderID>">99</td>
                             <td>Joe</td>
                             <td>9/5/2020</td>
                             <td>123 dojo way Belleveue WA 98005</td>

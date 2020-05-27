@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>OneStopShop Admin</title>
+    <title>Order Details</title>
 </head>
 <body>
     <div class="container">
@@ -16,13 +16,14 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="row">
                 <div class="col-sm-12">
-                    <h4>OneStopShop</h4>
+                    <h4>Dashboard</h4>
                 </div>
                 <div class="col-sm-4">
-                    <a href="/showProducts">Product Dashboard</a>
+                    <a href="/dashboard/orders/<int:pageNum>">Orders</a>
+                    {% comment %} <a href="/dashboard/orders">Orders</a> {% endcomment %}
                 </div>
                 <div class="col-sm-4">
-                    <a href="/profile">Profile</a>
+                    <a href="/showProducts">Products</a>
                 </div>
                 <div class="col-sm-4">
                     <a href="/logoff">Log Off</a>
@@ -32,52 +33,62 @@
         </div>
             <br>
         <div class="row">
-            <div class="col-sm-8">
-                <h4>Manage Users</h4>
-            </div>
-            <div class="col-sm-4">
-                <button type="button" class="btn btn-primary">Add User</button>
-            </div>
+            <div class="col-sm-8"></div>
+
         </div><br>
             <table class="table table-striped table-bordered table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">email</th>
-                        <th scope="col">User Level</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                            <td></td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mark@mdo</td>
-                            <td>admin</td>
-                            <td><a href="/edit">Edit | <a href="/remove">Remove</td>
+                        <td>35</td>
+                        <td>Cup</td>
+                        <td>$9.99</td>
+                        <td>1</td>
+                        <td>$9.99</td>
                     </tr>
                     <tr>
-                            <td></td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>jacob@fat</td>
-                            <td>user</td>
-                            <td><a href="/edit">Edit | <a href="/remove">Remove</td>
+                        <td>215</td>
+                        <td>Shirt</td>
+                        <td>$19.99</td>
+                        <td>2</td>
+                        <td>$39.98</td>
                     </tr>
-                    <tr>
-                            <td></td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>larry@twitter</td>
-                            <td>user</td>
-                            <td><a href="/edit">Edit | <a href="/remove">Remove</td>
-                        </tr>
                 </tbody>
             </table>
-        
+            <p>Status:<span class="badge badge-secondary">Shipped</span></p>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <p>Order ID: 1</p>
+                <h6>Customer shipping info:</h6>
+                    <p>Name: bob</p>
+                    <p>Address: 123 dojo way</p>
+                    <p>City: Seattle</p>
+                    <p>State: WA</p>
+                    <p>Zip: 98133</p>
+                <h6>Customer billing info:</h6>
+                    <p>Name: bob</p>
+                    <p>Address: 123 dojo way</p>
+                    <p>City: Seattle</p>
+                    <p>State: WA</p>
+                    <p>Zip: 98133</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <p>Sub total: $29.98</p>
+                <p>Shipping: $1.00</p>
+                <p>Total Price: $30.98</p>
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
