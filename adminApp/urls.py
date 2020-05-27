@@ -1,4 +1,5 @@
 from django.urls import path
+from productsApp.models import *
 from . import views
 
 urlpatterns = [
