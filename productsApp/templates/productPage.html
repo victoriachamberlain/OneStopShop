@@ -13,11 +13,25 @@
         <div class="col">
             <form action="/addUser" method="POST">
             {% csrf_token %}
-            <div class="product" style="justify-content: space-between;">
-                <h1>Dojo eCommerce</h1>
-                <a href="/dashboard" class="btn btn-success" role="button" style="position: right;">Shopping Cart</a>
+            <div class="pos-f-t">
+                <div class="pos-f-t">
+                    <div class="collapse" id="navbarToggleExternalContent">
+                        <div class="bg-dark p-4">
+                        <h4 class="text-white">One Sotop Shop</h4>
+                        <span class="text-muted">Toggleable via the navbar brand.</span>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-dark bg-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a href="shoppingCart" role="button" style="position: right;">Shopping Cart</a>
+                    </nav>
+                </div>
+            
+            <div class="product">
                 <img class="col"style="width: 15%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                <label for="cars">Sort</label>
+                <label for="sort">Sort</label>
                     <select name="sort">
                         <option value="Price">Price</option>
                         <option value="mostPop">Most Popular</option>
@@ -57,11 +71,11 @@
                 </p>
                 <div class="labels">
                     <select name="sort">
-                        <option value="1">Price</option>
-                        <option value="2">Most Popular</option>
-                        <option value="3">High to Low</option>
-                        <option value="4">Low to High</option>
-                        <option value="5">Featured</option> 
+                        <option value="1">1</option>
+                        <option value="2">2/option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option> 
                     </select>
                 </div>
     </form>
