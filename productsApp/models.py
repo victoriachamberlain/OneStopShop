@@ -8,7 +8,7 @@ class ShippingInfo(models.Model):
     address = models.CharField(max_length = 50)
     address2 = models.CharField(max_length = 50)
     city = models.CharField(max_length = 30)
-    state = model.CharField(max_length = 30)
+    state = models.CharField(max_length = 30)
     zipcode = models.PositiveIntegerField()
 
     user = models.ForeignKey(User, related_name = 'shippingInfo', on_delete = models.CASCADE)
@@ -22,7 +22,7 @@ class BillingInfo(models.Model):
     address = models.CharField(max_length = 50)
     address2 = models.CharField(max_length = 50)
     city = models.CharField(max_length = 30)
-    state = model.CharField(max_length = 30)
+    state = models.CharField(max_length = 30)
     zipcode = models.PositiveIntegerField()
 
     created_at = models.DateTimeField(auto_now_add = True)
@@ -30,7 +30,7 @@ class BillingInfo(models.Model):
 
 class PaymentInfo(models.Model):
     card_number = models.PositiveIntegerField()
-    expiration_month = models.IntegerField(min_value = 1, max_value = 12)
+    expiration_month = models.IntegerField()
     expiration_year = models.IntegerField()
 
     user = models.ForeignKey(User, related_name = 'paymentInfo', on_delete = models.CASCADE)
