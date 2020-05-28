@@ -1,37 +1,41 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 
-def showLogin(request):
-    return HttpResponse('admin login page') # render admin login page
-
-def processLogin(request):
-    # refer to login app's login function
-    return HttpResponse('admin login process') # processes the login and redirects to dashboard/orders/1
-
-def showOrders(reqeuest, pageNum):
-    return HttpResponse('admin dashboard - orders') # render admin dashboard - orders
-
-def editOrderStatus(request, orderId):
-    # code for editing the order status of an order
-    return HttpResponse('process order edit') # process the edit and redirect to page currently at
-
-def showOrderDetails(request, orderId):
-    return HttpResponse('order details') # render a page with all the details of the order
+def admin_dash(request):
+    return render(request, "user_admin.html")
 
 def showProducts(request):
-    return HttpResponse('admin dashboard - products') # render admin dashboard - products
+    return render(request, "show_products.html")
 
-def createProduct(request):
-    # code for creating a product object
-    return HttpResponse('create a product') # process the creation and redirect to the products page
+## ORDERs and ORDER STATUS below
+def showOrders(request, pageNum):
+# def showOrders(request):
+    return render(request, "showOrders.html")
 
-def showProduct(request, orderId):
-    return HttpResponse('edit page with editable product info') # render edit product page
+def editOrderStatus(request, orderId):# code for editing the order status of an order
+    return HttpResponse('process order edit') # process the edit and redirect to page currently at
 
-def editProduct(request, orderId):
-    # code for processing the editing of the product object
-    return HttpResponse('process product edit') # process the edit and redirect back to the product page previously at
+# def showOrderDetails(request, orderId):
+def showOrderDetails(request):
+    return render(request, "showOrderDetails.html") # render a page with all the details of the order
 
-def deleteProduct(request, orderId):
-    # code for deleting the editing of the product object
+### CREATE Products BELOW
+def createProduct(request):# code for creating a product object
+    return render(request, "add_product.html")
+
+def editProduct(request, orderId):# code for processing the editing of the product object
+    return render(request, "editProduct.html")
+
+def deleteProduct(request, orderId): # code for deleting the editing of the product object
     return HttpResponse('process product deletion') # process the deletion and redirect back to the  product page previously at
+
+
+
+####---------------------
+# def showLogin(request):
+#     return HttpResponse('admin login page') # render admin login page
+
+# def processLogin(request):
+#     # refer to login app's login function
+#     return HttpResponse('admin login process') # processes the login and redirects to dashboard/orders/1
+#-------------
