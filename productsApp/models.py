@@ -72,10 +72,11 @@ class Product(models.Model):
     name = models.CharField(max_length = 50)
     desc = models.TextField()
     price = models.DecimalField(max_digits = 5, decimal_places = 2)
+    image = models.ImageField(upload_to = 'products', null=True)
 
-    order = models.ForeignKey(Order, related_name = 'products', on_delete = models.CASCADE)
-    wishList = models.ForeignKey(WishList, related_name = 'products', on_delete = models.CASCADE)
-    shoppingCart = models.ForeignKey(ShoppingCart, related_name = 'products', on_delete = models.CASCADE)
+    order = models.ForeignKey(Order, related_name = 'products', on_delete = models.CASCADE, null = True)
+    wishList = models.ForeignKey(WishList, related_name = 'products', on_delete = models.CASCADE, null = True)
+    shoppingCart = models.ForeignKey(ShoppingCart, related_name = 'products', on_delete = models.CASCADE, null = True)
     category = models.ForeignKey(Category, related_name = 'products', on_delete = models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add = True)
