@@ -42,36 +42,42 @@
                         <th scope="col">Description</th>
                         <th scope="col">Price</th>
                         <th scope="col">Date Added</th>
-                        
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>   
-                            <td><a href="/singleProductPage">Product Name</td>
-                            <td>Product description goes here</td>
-                            <td>$49.99</td>
-                            <td>May 25, 2020</td>
-                            
-                            
-                           
-                            <td><div class="form-group">
+                    {% for product in products_in_cart %}
+                    <tr>
+                        <td><a href="/product/{{product.id}}">{{product.name}}</a>{{product.image}}</td>
+                        <td>{{product.desc}}</td>
+                        <td>{{product.price}}</td>
+                        <!-- <td>TBD on how to implement this</td> -->
+                        <td></td>
+                        <td><a href="/user/{{user.id}}/shoppingCart/{{product.id}}/delete" class="btn btn-outline-light">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>   
+                        <td><a href="/singleProductPage">Product Name</td>
+                        <td>Product description goes here</td>
+                        <td>$49.99</td>
+                        <td>May 25, 2020</td>
+                        <td>
+                            <div class="form-group">
                                 <label for="prod_categories"></label>
-                                <button class="form-control" id="prod_categories"><a href="/cart/{{cart_item.id}}/delete">Remove</a></button>
-                            </div></td>
+                            <button class="form-control" id="prod_categories"><a href="/cart/{{cart_item.id}}/delete">Remove</a></button>
+                            </div>
+                            <a href="/user/{{user.id}}/shoppingCart/deleteFromCart"></a>
+                        </td>
                     </tr>
                     <tr>
                         <td><a href="/singleProductPage">Product Name</td>
                             <td>Product description goes here</td>
                             <td>$49.99</td>
                             <td>May 25, 2020</td>
-                            
-                            
-                          
                             <td><div class="form-group">
                                 <label for="prod_categories"></label>
                                 <button class="form-control" id="prod_categories"><a href="/cart/{{cart_item.id}}/delete">Remove</a></button>
                             </div></td>  
-                            </tr>
+                            </tr> -->
                     </tbody>
                 </table>
                 <div>
@@ -85,7 +91,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</body>
-</html>
 </body>
 </html>

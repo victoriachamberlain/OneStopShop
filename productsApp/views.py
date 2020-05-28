@@ -1,34 +1,59 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 
-
-# Create your views here.
-from django.shortcuts import render, HttpResponse, redirect
-from .models import *
-
 def index(request):
     context = {
-    	# "User": User.objects.get(id=request.session['user_id']),
+        "User": User.objects.filter(id=request.session['user_id'])[0],
     }
     return render(request, "index.html", context)
 
-def showProduct(request): #add productID
+def products(request, categoryName):
+    if(len(categoryName) != 0):
+        # navigate to product page with category selected
+        return render(request, 'productsListPage.html')
+    else:
+        # navigate to product page with default category selected
+        return render(request, 'productsListPage.html') # change the name of the html to something different
+
+def singleProduct(request, productId):
     context = {
-    	# "User": User.objects.get(id=request.session['user_id']),
-        # "Product": Product.objects.all()
+        "User": User.objects.filter(id=request.session['user_id'])[0],
+        "Product": Product.objects.all()
     }
     return render(request, "productPage.html", context)
 
-def showShoppingCart(request):#add userId
+# def showShoppingCart(request):#add userId
+#     context = {
+#         # "User": User.objects.filter(id=userID),
+#         # "Product": Product.objects.all()
+#     }
+#     return render(request, "shoppingCart.html", context)
+
+##Shopping Cart
+def addToCart(request, productId): # changed ShoppingCart_id to productId
+    # ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
+    user = User.objects.filter(id = request.session['user_id'])[0]
+    ShoppingCart.objects.filter(user = user).products.add(Product.objects.filter(id = productId)[0])
+    return redirect(f'/user/{{user.id}}/shoppingCart') # ajax action? so it doesn't make the user navigate away form the page every time they add a new item
+
+def shoppingCart(request, userId): #changed user_id to userId
     context = {
-    	# "User": User.objects.filter(id=userID),
-        # "Product": Product.objects.all()
+        'products_in_cart': Product.objects.filter(shoppingCart__user__id = request.session['user_id']),
+        'user': User.objects.filter(id = request.session['user_id']),
     }
-    return render(request, "shoppingCart.html", context)
+    return render(request, "shopping_cart.html", context)
+
+
+def deleteCartItem(request, userId, productId): # changed product_id to productId and added userId
+    # to_delete=ShoppingCart.objects.get(id=product_id)
+    # to_delete.delete()
+    product_to_remove = Product.objects.filter(id = productId)[0]
+    ShoppingCart.objects.filter(user = User.objects.filter(id = userId)[0])[0].products.remove(product_to_remove)
+    return redirect(f'/user/{{userId}}/shoppingCart')
 
 def showPayment(request):#add UserId
     context = {
-    	# "User": User.objects.filter(id=userID),
+        # "User": User.objects.filter(id=userID),
         # "Product": Product.objects.filter(id=userId)
     }
     return render(request, "payment.html", context)# render payment page with all of the items from shopping cart
@@ -41,43 +66,28 @@ def processPayment(request, userId):
 ## Wish List
 def wishList(request, userID):
     # include context dictionary to pass the wish list object linked to the user
-    return HttpResponse("wish_list.html")
+    return render(request, "wish_list.html")
 
-def addWishItem(request, WishList_id):
+def addWishItem(request, userId): # changed wish_id to userId
     WishList.objects.get(id=wishList_id).products.add(Product.objects.get(id=request.POST['product_id']))
 
     return redirect('/wishlist')
 
-def deleteWishItem(request, product_id):
+def deleteWishItem(request, userId, productId): # changed product_id to productId and added userId
     to_delete=wishList.objects.get(id=product_id)
     to_delete.delete()
     return redirect('/wishlist')
 
-def addWishtoCart(request, ShoppingCart_id):
-    ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
-
-    return redirect('/wishlist')
+def addWishtoCart(request, userId, productId): # replace ShoppingCart_id with userId and productId
+    # ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
+    ShoppingCart.objects.filter(user = User.objects.filter(id = userId)[0])[0].products.add(Product.objects.filter(id = productId)[0])
+    return redirect(f'/user/{{userId}}/wishlist') # ajax action? so it doesn't make the user navigate away form the page every time they add a new item
     ##this cannot be right...
 
-##Shopping Cart
-def shoppingCart(request, user_id):
-    # include context dictionary to pass the shopping cart object linked to the user
-    return HttpResponse("shopping_cart.html")
-
-def deleteCartItem(request, product_id):
-    to_delete=ShoppingCart.objects.get(id=product_id)
-    to_delete.delete()
-    return redirect('/shoppingcart')
-
-def addToCart(request, ShoppingCart_id):
-     ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
-
-    return redirect('/shoppingcart')
-
 ##Receipt
-def receipt(request, order_id):
+def showReceipt(request, order_id):
     context={
         "purchased_items": Order.objects.get(id=order_id)
     }
-    return HttpResponse('receipt.html')
+    return render(request, 'receipt.html')
 
