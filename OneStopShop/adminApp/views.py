@@ -30,8 +30,38 @@ def deleteProduct(request, orderId): # code for deleting the editing of the prod
     return HttpResponse('process product deletion') # process the deletion and redirect back to the  product page previously at
 
 ## Wish List
-def wish_list(request):
+def wishList(request):
     return render(request, "wish_list.html")
+
+def addWishItem(request, WishList_id):
+    WishList.objects.get(id=wishList_id).products.add(Product.objects.get(id=request.POST['product_id']))
+
+    return redirect('/wishlist')
+
+def deleteWishItem(request, product_id):
+    to_delete=wishList.objects.get(id=product_id)
+    to_delete.delete()
+    return redirect('/wishlist')
+
+def addWishtoCart(request, ShoppingCart_id):
+    ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
+
+    return redirect('/wishlist')
+    ##this cannot be right...
+
+##Shopping Cart
+def shoppingCart(request):
+    return render(request, "shopping_cart.html")
+
+def deleteCartItem(request, product_id):
+    to_delete=ShoppingCart.objects.get(id=product_id)
+    to_delete.delete()
+    return redirect('/shoppingcart')
+
+def addToCart(request, ShoppingCart_id):
+     ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
+
+    return redirect('/shoppingcart')
 
 ####---------------------
 # def showLogin(request):

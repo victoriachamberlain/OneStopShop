@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>OneStopShop Wish List</title>
+    <title>OneStopShop Cart</title>
     
 </head>
 <body>
@@ -12,7 +12,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="row">
                 <div class="col-sm-12">
-                    <h4>Your Wish List</h4>
+                    <h4>Your Cart</h4>
                 </div>
                 <div class="col-sm-4">
                     <a href="/dahsboard/orders">Orders</a>
@@ -53,13 +53,10 @@
                             <td>May 25, 2020</td>
                             
                             
+                           
                             <td><div class="form-group">
                                 <label for="prod_categories"></label>
-                                <button class="form-control" id="prod_categories"><a href="/wish_list/{{wish_list_item.id}}/add">Add to Cart</a></button>
-                            </div></td>
-                            <td><div class="form-group">
-                                <label for="prod_categories"></label>
-                                <button class="form-control" id="prod_categories"><a href="/wish_list/{{wish_list_item.id}}/delete">Remove</a></button>
+                                <button class="form-control" id="prod_categories"><a href="/cart/{{cart_item.id}}/delete">Remove</a></button>
                             </div></td>
                     </tr>
                     <tr>
@@ -69,17 +66,17 @@
                             <td>May 25, 2020</td>
                             
                             
+                          
                             <td><div class="form-group">
                                 <label for="prod_categories"></label>
-                                <button class="form-control" id="prod_categories"><a href="/wish_list/{{wish_list_item.id}}/add">Add to Cart</a></button>
-                            </div></td>
-                            <td><div class="form-group">
-                                <label for="prod_categories"></label>
-                                <button class="form-control" id="prod_categories"><a href="/wish_list/{{wish_list_item.id}}/delete">Remove</a></button>
+                                <button class="form-control" id="prod_categories"><a href="/cart/{{cart_item.id}}/delete">Remove</a></button>
                             </div></td>  
                             </tr>
                     </tbody>
                 </table>
+                <div>
+                    <button class="form-control"><a href="">Check Out</a></button>
+                </div>
         </div>
     </div>
 
