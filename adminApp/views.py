@@ -28,6 +28,9 @@ def editProduct(request, orderId):# code for processing the editing of the produ
 
 def deleteProduct(request, orderId): # code for deleting the editing of the product object
     return HttpResponse('process product deletion') # process the deletion and redirect back to the  product page previously at
+
+
+
 ####---------------------
 # def showLogin(request):
 #     return HttpResponse('admin login page') # render admin login page
