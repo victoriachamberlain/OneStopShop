@@ -15,11 +15,6 @@ def processPayment(request, userId):
     # code to process payment
     return HttpResponse('process payment') # process the payment and redirect to the receipt page
 
-def showReceipt(request, orderId):
-    # include context dictionary to pass in the order object
-    return HttpResponse('receipt page') # render receipt page with the order information
-
-
 ## Wish List
 def wishList(request, userID):
     # include context dictionary to pass the wish list object linked to the user
@@ -55,3 +50,10 @@ def addToCart(request, ShoppingCart_id):
      ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
 
     return redirect('/shoppingcart')
+
+##Receipt
+def receipt(request, order_id):
+    context={
+        "purchased_items": Order.objects.get(id=order_id)
+    }
+    return HttpResponse('receipt.html')
