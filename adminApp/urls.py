@@ -1,3 +1,4 @@
+
 from django.urls import path
 from . import views
 
@@ -24,9 +25,4 @@ urlpatterns = [
     path("dashboard/products", views.showProducts),
     path("", views.admin_dash),
 ]
-##------
-# urlpatterns = [
-#     path('', views.showLogin),
 
-#     path('login', views.processLogin),
-###_------------
