@@ -82,6 +82,22 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# Using MySQL database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': '/my.cnf',
+#             # To set SQL mode
+#             'init_command': "SET sql_mode='STRIC_TRANS_TABLES'",
+#             # Setting table default as INNODB
+#             'init_command': 'SET default_storage_engine=INNODB',
+#             # Setting Isolation level
+#             'isolation_level': 'read committed',
+#         },
+#     }
+# }
+
 
 
 # Password validation
@@ -108,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/California'
 
 USE_I18N = True
 
