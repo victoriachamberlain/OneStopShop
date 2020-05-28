@@ -1,20 +1,65 @@
 from django.db import models
+from loginApp.models import *
+from adminApp.models import *
 
-# Create your models here.
-# class Shipping(models.Model):
-#     firstName = models.CharField(max_length=13)
-#     lastName = models.CharField(max_length=23)
-#     address = models.CharField(max_length=101)
-#     address2 = models.CharField(max_length=101)
-#     city = models.CharField(max_length=13)
-#     state = models.CharField(max_length=13)
-#     zipCode = models.IntegerField(max_length=13)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     update_at = models.DateTimeField(auto_now=True)
-# class Billing(models.Model):
-#     userID = models.ForeignKey(User, related_name="post", on_delete = models.CASCADE)
-#     card = models.IntegerField(max_length=17)
-#     securityCode = models.IntegerField(max_length=3)
-#     expiration = models.Datefield()
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     update_at = models.DateTimeField(auto_now=True)
+# class ShippingInfo(models.Model):
+#     first_name = models.CharField(max_length = 30)
+#     last_name = models.CharField(max_length = 30)
+#     address = models.CharField(max_length = 50)
+#     address2 = models.CharField(max_length = 50)
+#     city = models.CharField(max_length = 30)
+#     state = model.CharField(max_length = 30)
+#     zipcode = models.PositiveIntegerField()
+#     created_at = models.DateTimeField(auto_now_add = True)
+#     updated_at = models.DateTimeField(auto_now = True)
+
+# class BillingInfo(models.Model):
+#     first_name = models.CharField(max_length = 30)
+#     last_name = models.CharField(max_length = 30)
+#     address = models.CharField(max_length = 50)
+#     address2 = models.CharField(max_length = 50)
+#     city = models.CharField(max_length = 30)
+#     state = model.CharField(max_length = 30)
+#     zipcode = models.PositiveIntegerField()
+#     created_at = models.DateTimeField(auto_now_add = True)
+#     updated_at = models.DateTimeField(auto_now = True)
+
+class Order(models.Model):
+    user = models.ForeignKey(User, related_name = 'orders', on_delete = models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    # one to many relationship with product
+
+class WishList(models.Model):
+    user = models.OneToOneField(User, related_name = 'wishList', on_delete = models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    # one to many relationship with product
+
+class ShoppingCart(models.Model):
+    user = models.OneToOneField(User, related_name = 'shoppingCart', on_delete = models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    # one to many relationship with product
+
+class Category(models.Model):
+    name = models.CharField(max_length = 50)
+
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+    # one to many relationship with product
+
+class Product(models.Model):
+    name = models.CharField(max_length = 50)
+    desc = models.TextField()
+    price = models.DecimalField(max_digits = 5, decimal_places = 2)
+    order = models.ForeignKey(Order, related_name = 'products', on_delete = models.CASCADE)
+    wishList = models.ForeignKey(WishList, related_name = 'products', on_delete = models.CASCADE)
+    shoppingCart = models.ForeignKey(ShoppingCart, related_name = 'products', on_delete = models.CASCADE)
+    category = models.ForeignKey(Category, related_name = 'products', on_delete = models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
