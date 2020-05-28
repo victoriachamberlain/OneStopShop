@@ -7,85 +7,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container mt-5 pt-5">
-        <div class="row">
-            <div class="col-sm-6 col-12">
-                <h3 class="text-center">Register</h3>
-                <form action="/user" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group row">
-                        {% for message in messages %}
-                        {% if message.extra_tags == "first_name" %}
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8">
-                            <span class="text-danger">{{message}}</span>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        <label for="first_name" class="col-sm-4">First Name: </label>
-                        <input type="text" name="first_name" class="col-sm-8 form-control">
-                    </div>
-                    <div class="form-group row">
-                        {% for message in messages %}
-                        {% if message.extra_tags == "last_name" %}
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8">
-                            <span class="text-danger">{{message}}</span>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        <label for="last_name" class="col-sm-4">Last Name: </label>
-                        <input type="text" name="last_name" class="col-sm-8 form-control">
-                    </div>
-                    <div class="form-group row">
-                        {% for message in messages %}
-                        {% if message.extra_tags == "email" %}
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8">
-                            <span class="text-danger">{{message}}</span>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        <label for="email" class="col-sm-4">Email: </label>
-                        <input type="text" name="email" class="col-sm-8 form-control">
-                    </div>
-                    <div class="form-group row">
-                        {% for message in messages %}
-                        {% if message.extra_tags == "birth_date" %}
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8">
-                            <span class="text-danger">{{message}}</span>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        <label for="birth_date" class="col-sm-4">Birth Date</label>
-                        <input type="date" name="birth_date" class="col-sm-8 form-control">
-                    </div>
-                    <div class="form-group row">
-                        {% for message in messages %}
-                        {% if message.extra_tags == "password" %}
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8">
-                            <span class="text-danger">{{message}}</span>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        <label for="password" class="col-sm-4">Password: </label>
-                        <input type="password" name="password" class="col-sm-8 form-control">
-                    </div>
-                    <div class="form-group row">
-                        <label for="pw_confirm" class="col-sm-4">Confirm Password: </label>
-                        <input type="password" name="pw_confirm" class="col-sm-8 form-control">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary" >Register</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-sm-6 col-12">
-                <h3 class="text-center">Login</h3>
-                <form action="/login" method="POST">
-                    {% csrf_token %}
+
+    <div class="row h-100">
+        <div class="col-6">
+            <div class="row align-items-center h-50">
+                <div class="login bg-light border col-6 mx-auto p-3 rounded">
+                    <h3 class="text-center">Login</h3>
+                    <form action="/user/process/login" method="POST">
+                        {% csrf_token %}
                     <div class="form-group row">
                         {% for message in messages %}
                         {% if message.extra_tags == "login_email" %}
@@ -106,7 +35,15 @@
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
+
+                </div>
+                <div class="text-center">
+                    <p>New user? Click <a href="/user/register">Here</a> to create a new account!</p>
+                </div>
             </div>
+        </div>
+        <div class="col-6">
+            <img src="https://d3tb2mkdocc4em.cloudfront.net/admissions/wp-content/uploads/sites/47/2016/03/people-coffee-notes-tea.jpg" class="h-75" alt="">
         </div>
     </div>
 </body>
