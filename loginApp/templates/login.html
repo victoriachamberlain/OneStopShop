@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Registration Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="row h-100">
@@ -13,7 +15,7 @@
                 <div class="login bg-light border col-6 mx-auto p-3 rounded">
                     <h3 class="text-center">Login</h3>
                     <form action="/user/process/login" method="POST">
-                        {% csrf_token %}
+                    {% csrf_token %}
                     <div class="form-group row">
                         {% for message in messages %}
                         {% if message.extra_tags == "login_email" %}
@@ -35,12 +37,12 @@
                     </div>
                 </form>
                 </div>
-                <div class="text-center">
-                    <p>New user? Click <a href="/user/register">Here</a> to create a new account!</p>
-                </div>
+            </div>
+            <div class="text-center">
+                <p>New user? Click <a href="/user/register">Here</a> to create a new account!</p>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 img-container">
             <img src="https://d3tb2mkdocc4em.cloudfront.net/admissions/wp-content/uploads/sites/47/2016/03/people-coffee-notes-tea.jpg" class="h-75" alt="">
         </div>
     </div>
