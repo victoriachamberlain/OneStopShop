@@ -15,6 +15,7 @@ def register(request):
     # Redirect users who navigate to this page without sending a form
     if request.method == "GET":
         return redirect('/home')
+
     
     errors = User.objects.registration_validation(request.POST)
 
@@ -22,6 +23,7 @@ def register(request):
         for key, value in errors.items():
             messages.error(request, value, extra_tags = key)
         return redirect('/user')
+
     pw_hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
     new_user = User.objects.create(
         first_name = request.POST['first_name'],
@@ -46,6 +48,7 @@ def login(request):
 
     messages.error(request, "Invalid email/password", extra_tags="login_email")
     return redirect('/')
+
 
 def editUser(request, userId):
     # Returns to main page if the user is not logged in

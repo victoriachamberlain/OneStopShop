@@ -1,19 +1,42 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 
+
+# Create your views here.
+from django.shortcuts import render, HttpResponse, redirect
+from .models import *
+
 def index(request):
-    return HttpResponse('hello') # render main page
+    context = {
+    	# "User": User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, "index.html", context)
 
-def showProduct(request, productId):
-    # include context dictionary to pass in a product object
-    return HttpResponse('product detail') # render product detail page
+def showProduct(request): #add productID
+    context = {
+    	# "User": User.objects.get(id=request.session['user_id']),
+        # "Product": Product.objects.all()
+    }
+    return render(request, "productPage.html", context)
 
-def showPayment(request, userId):
-    return HttpResponse('payment page') # render payment page with all of the items from shopping cart
+def showShoppingCart(request):#add userId
+    context = {
+    	# "User": User.objects.filter(id=userID),
+        # "Product": Product.objects.all()
+    }
+    return render(request, "shoppingCart.html", context)
+
+def showPayment(request):#add UserId
+    context = {
+    	# "User": User.objects.filter(id=userID),
+        # "Product": Product.objects.filter(id=userId)
+    }
+    return render(request, "payment.html", context)# render payment page with all of the items from shopping cart
 
 def processPayment(request, userId):
     # code to process payment
     return HttpResponse('process payment') # process the payment and redirect to the receipt page
+
 
 ## Wish List
 def wishList(request, userID):
@@ -57,3 +80,4 @@ def receipt(request, order_id):
         "purchased_items": Order.objects.get(id=order_id)
     }
     return HttpResponse('receipt.html')
+
