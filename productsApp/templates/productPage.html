@@ -11,8 +11,6 @@
 <body class="text-light bg-dark">
     <div class="container">
         <div class="col">
-            <form action="/addUser" method="POST">
-            {% csrf_token %}
             <div class="pos-f-t">
                 <div class="pos-f-t">
                     <div class="collapse" id="navbarToggleExternalContent">
@@ -30,7 +28,7 @@
                 </div>
             
             <div class="product">
-                <img class="col"style="width: 15%;"src="{{product.image}}" alt="Logo">
+                <img class="col"style="width: 45%;"src="{{product.image}}" alt="Logo">
                 <label for="sort">Sort</label>
                     <select name="sort">
                         <option value="Price">Price</option>
@@ -42,8 +40,7 @@
                     </select>
             </table>
             </div>
-        </div>
-    </form>
+        </div>    
     <form>
         <div class="row">
             <h1>{{product.name}}</h1>
@@ -51,7 +48,7 @@
             <div class="labels">
                 <select name="sort">
                     <option value="1">1</option>
-                    <option value="2">2/option>
+                    <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option> 
