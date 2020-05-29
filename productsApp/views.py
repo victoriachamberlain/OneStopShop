@@ -4,7 +4,7 @@ import requests
 
 def index(request):
     context = {
-        "User": User.objects.filter(id=request.session['user_id'])[0],
+        "user": User.objects.filter(id=request.session['user_id'])[0],
     }
     return render(request, "index.html", context)
 
@@ -34,12 +34,19 @@ def products(request, categoryName=''):
         #     'product': productList,
         #     'categories': categories,
         # }
+
+        context = {
+            'categories': Category.objects.all(),
+            'products': Product.objects.all()
+        }
         return render(request, 'productsListing.html', context) # change the name of the html to something different
 
 def singleProduct(request, productId):
+    product = Product.objects.filter(id = productId)[0]
     context = {
-        "User": User.objects.filter(id=request.session['user_id'])[0],
-        "Product": Product.objects.all()
+        "user": User.objects.filter(id=request.session['user_id'])[0],
+        "product": product,
+        'similar_products': Product.objects.filter(category = Category.objects.filter(products = product)[0])[:8],
     }
     return render(request, "productPage.html", context)
 
