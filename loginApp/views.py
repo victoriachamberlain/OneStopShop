@@ -8,8 +8,8 @@ import bcrypt
 
 def showLogin(request):
     # If the user is already logged in, they cannot navigate to the login/registration page
-    if 'user_id' in request.session:
-        return redirect('/home')
+    # if 'user_id' in request.session:
+    #     return redirect('/home')
     # form = RegisterForm()
     # context = {
     #     'regForm': form
@@ -18,8 +18,8 @@ def showLogin(request):
 
 def showRegister(request):
     # If the user is already logged in, they cannot navigate to the login/registration page
-    if 'user_id' in request.session:
-        return redirect('/home')
+    # if 'user_id' in request.session:
+    #     return redirect('/home')
     return render(request, 'register.html')
 
 def register(request):
@@ -56,7 +56,7 @@ def login(request):
             return redirect('/home')
 
     messages.error(request, "Invalid email/password", extra_tags="login_email")
-    return redirect('/user')
+    return redirect('/user/login')
 
 
 def editUser(request, userId):

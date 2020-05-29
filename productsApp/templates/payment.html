@@ -55,7 +55,7 @@
                             {% endfor %}
                     </div>
             <div class="usertable">
-                        <form action="{{order.id}}/receipt" method="POST">
+                        <form action="/user/{{User.id}}/payment/process" method="POST">
                     {% csrf_token %}
                         <div class="Shipping Info">
                             <h1>Shipping information</h1>

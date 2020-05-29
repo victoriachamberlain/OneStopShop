@@ -117,13 +117,13 @@ def processPayment(request, userId):
         zipcode = request.POST['billing_zipcode']
         
     )
-    pay = PaymentInfo.objects.create(
-        card_number = request.POST['creditCard'],
-        security_code = request.POST['securityCode'],
+    # pay = PaymentInfo.objects.create(
+    #     card_number = request.POST['creditCard'],
+    #     security_code = request.POST['securityCode'],
         
-    )
-    print(request.POST["extDate"])
-    return redirect("/reciept")
+    # )
+    print(request.POST["expDate"])
+    return redirect("/receipt")
 
 
 
