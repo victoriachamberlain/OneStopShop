@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
+import requests
 
 def index(request):
     context = {
@@ -7,13 +8,33 @@ def index(request):
     }
     return render(request, "index.html", context)
 
-def products(request, categoryName):
+def products(request, categoryName=''):
     if(len(categoryName) != 0):
         # navigate to product page with category selected
-        return render(request, 'productsListPage.html')
+        return render(request, 'productsListing.html')
     else:
-        # navigate to product page with default category selected
-        return render(request, 'productsListPage.html') # change the name of the html to something different
+        # result = requests.get('https://api.printful.com/products').json()['result']
+        # print(r)
+        # categories = [];
+        # productList = [];
+        # for item in result:
+        #     if item['type'] == 'T-SHIRT':
+        #         if item['type_name'] not in categories:
+        #             categories.append(item['type_name'])
+                # print(item['model'])
+                # Product.objects.create(
+                #     name = item['model'],
+                #     desc = item['description'],
+                #     price = 9.99,
+                #     image = item['image'],
+                #     category = Category.objects.filter(name = item['type_name'])[0]
+                # )
+        # print('this is the products:', productList)
+        # context = {
+        #     'product': productList,
+        #     'categories': categories,
+        # }
+        return render(request, 'productsListing.html', context) # change the name of the html to something different
 
 def singleProduct(request, productId):
     context = {
@@ -78,7 +99,7 @@ def deleteWishItem(request, userId, productId): # changed product_id to productI
     to_delete.delete()
     return redirect('/wishlist')
 
-def addWishtoCart(request, userId, productId): # replace ShoppingCart_id with userId and productId
+def addWishToCart(request, userId, productId): # replace ShoppingCart_id with userId and productId
     # ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
     ShoppingCart.objects.filter(user = User.objects.filter(id = userId)[0])[0].products.add(Product.objects.filter(id = productId)[0])
     return redirect(f'/user/{{userId}}/wishlist') # ajax action? so it doesn't make the user navigate away form the page every time they add a new item
