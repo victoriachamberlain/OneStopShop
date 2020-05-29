@@ -16,5 +16,4 @@ urlpatterns = [
     path('user/<int:userId>/wishList/<int:productId>/delete', views.deleteWishItem),
     path('user/<int:userId>/wishList/<int:productId>/addToCart', views.addWishToCart),
     path('<int:orderId>/receipt', views.showReceipt),
-    # path('products/createProducts', views.createProducts),
 ]
