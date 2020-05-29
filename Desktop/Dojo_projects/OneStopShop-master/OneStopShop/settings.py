@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'lpeqc2lrmz2c=-ptk^(g*+z_26qd*u8ot!^tr^zh=nw-bb(r+f'
+SECRET_KEY = 'lq)tftup19!^!adj0j3&qv54xxjuk=5)(w4jctbu+djsvt3&@j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -30,10 +30,16 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# CORS_ORIGIN_WHITELIST = [
+#     "https://api.printful.com",
+#     "http://localhost:8000"
+# ]
+
 INSTALLED_APPS = [
     'adminApp',
     'loginApp',
     'productsApp',
+    # 'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'OneStopShop.urls'
@@ -82,6 +89,22 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# Using MySQL database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': '/my.cnf',
+#             # To set SQL mode
+#             'init_command': "SET sql_mode='STRIC_TRANS_TABLES'",
+#             # Setting table default as INNODB
+#             'init_command': 'SET default_storage_engine=INNODB',
+#             # Setting Isolation level
+#             'isolation_level': 'read committed',
+#         },
+#     }
+# }
+
 
 
 # Password validation

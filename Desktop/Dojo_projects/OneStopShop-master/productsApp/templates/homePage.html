@@ -9,25 +9,54 @@
     <title>Document</title>
 </head>
 <body class="text-light bg-dark">
-    <h6><a href="user/">Create Account or Login<a></h6>
-    <div class="col-8" style="margin: auto;">
+    <div class="container">
         <div class="usertable">
             <form action="/addUser" method="POST">
             {% csrf_token %}
-            <div class="table" style="margin: auto">
-                <h1>Dojo eCommerce</h1>
-                <a href="/dashboard" class="btn btn-success" role="button" style="position: right;">Shopping Cart</a>
-                </table>
-            </div>
+            <div class="pos-f-t">
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">T-shirts</a>
+                            <a class="dropdown-item" href="#">Shoes</a>
+                            <a class="dropdown-item" href="#">Cups</a>
+                            <a class="dropdown-item" href="#">Fruit</a>
+                            <a class="dropdown-item" href="#">Electronics</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                        <a href="shoppingCart" role="button" style="position: right;">Shopping Cart</a>
+                        </form>
+                    </div>
+                    </nav>
+            </nav>
         </div>
             </form>
         <form>         
-            <div class="bottomImages">
+            <div class="itemImages">
                 <h3>Items</h3>
                 <!-- sure there is a better way but needed a visual -->
                 <div class="items">
+                    <a href="/product">
                     <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
                     <h11>19.99</h11>
+                    </a>
                     <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
                     <h11>19.99</h11>
                     <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
