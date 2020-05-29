@@ -51,10 +51,10 @@ def deleteCartItem(request, userId, productId): # changed product_id to productI
     ShoppingCart.objects.filter(user = User.objects.filter(id = userId)[0])[0].products.remove(product_to_remove)
     return redirect(f'/user/{{userId}}/shoppingCart')
 
-def showPayment(request):#add UserId
+def showPayment(request, userId): #productId
     context = {
-        # "User": User.objects.filter(id=userID),
-        # "Product": Product.objects.filter(id=userId)
+        "User": User.objects.filter(id=userId),
+        "Product": Product.objects.filter(id=userId)
     }
     return render(request, "payment.html", context)# render payment page with all of the items from shopping cart
 
@@ -78,7 +78,7 @@ def deleteWishItem(request, userId, productId): # changed product_id to productI
     to_delete.delete()
     return redirect('/wishlist')
 
-def addWishtoCart(request, userId, productId): # replace ShoppingCart_id with userId and productId
+def addWishToCart(request, userId, productId): # replace ShoppingCart_id with userId and productId
     # ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
     ShoppingCart.objects.filter(user = User.objects.filter(id = userId)[0])[0].products.add(Product.objects.filter(id = productId)[0])
     return redirect(f'/user/{{userId}}/wishlist') # ajax action? so it doesn't make the user navigate away form the page every time they add a new item
