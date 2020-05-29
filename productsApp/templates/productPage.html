@@ -30,7 +30,7 @@
                 </div>
             
             <div class="product">
-                <img class="col"style="width: 15%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                <img class="col"style="width: 15%;"src="{{product.image}}" alt="Logo">
                 <label for="sort">Sort</label>
                     <select name="sort">
                         <option value="Price">Price</option>
@@ -45,60 +45,27 @@
         </div>
     </form>
     <form>
-            <div class="row">
-                <h1>Product Description</h1>
-                <p>Description Description Description Description Description
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription 
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription 
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                    DescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                </p>
-                <div class="labels">
-                    <select name="sort">
-                        <option value="1">1</option>
-                        <option value="2">2/option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option> 
-                    </select>
-                </div>
+        <div class="row">
+            <h1>{{product.name}}</h1>
+            <p>{{product.desc}}</p>
+            <div class="labels">
+                <select name="sort">
+                    <option value="1">1</option>
+                    <option value="2">2/option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option> 
+                </select>
+            </div>
     </form>
             <form>         
                 <div class="bottomImages">
                     <h3>Similar Items</h3>
                     <div class="labels">
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
-                        <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
-                        <h11>19.99</h11>
+                        {% for product in similar_products.all %}
+                        <img class="col"style="width: 8%;"src="{{product.image}}" alt="Logo">
+                        <h11>9.99</h11>
+                        {% endfor %}
                     </div>
                 </form> 
             </div>
