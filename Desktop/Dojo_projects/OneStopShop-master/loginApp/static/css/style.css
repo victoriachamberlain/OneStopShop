@@ -1,9 +1,0 @@
-.img-container {
-    overflow: hidden;
-    text-indent: -50%;
-}
-
-.col-6 img{
-    object-fit: cover;
-    object-position: -50% 0;
-}
