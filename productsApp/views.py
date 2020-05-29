@@ -3,7 +3,7 @@ from .models import *
 
 def index(request):
     context = {
-        "User": User.objects.filter(id=request.session['user_id'])[0],
+        #"User": User.objects.filter(id=request.session['user_id'])[0],
     }
     return render(request, "index.html", context)
 
@@ -78,7 +78,7 @@ def deleteWishItem(request, userId, productId): # changed product_id to productI
     to_delete.delete()
     return redirect('/wishlist')
 
-def addWishtoCart(request, userId, productId): # replace ShoppingCart_id with userId and productId
+def addWishtocart(request, userId, productId): # replace ShoppingCart_id with userId and productId
     # ShoppingCart.objects.get(id=ShoppingCart_id).products.add(Product.objects.get(id=request.POST['product_id']))
     ShoppingCart.objects.filter(user = User.objects.filter(id = userId)[0])[0].products.add(Product.objects.filter(id = productId)[0])
     return redirect(f'/user/{{userId}}/wishlist') # ajax action? so it doesn't make the user navigate away form the page every time they add a new item

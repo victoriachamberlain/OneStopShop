@@ -14,6 +14,6 @@ urlpatterns = [
     path('user/<int:userId>/wishList', views.wishList),
     path('user/<int:userId>/wishList/add', views.addWishItem),
     path('user/<int:userId>/wishList/<int:productId>/delete', views.deleteWishItem),
-    path('user/<int:userId>/wishList/<int:productId>/addToCart', views.addWishTocart),
+    path('user/<int:userId>/wishList/<int:productId>/addToCart', views.addWishtocart),
     path('<int:orderId>/receipt', views.showReceipt),
 ]
