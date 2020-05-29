@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
-import requests
+# import requests
 
 def index(request):
     context = {

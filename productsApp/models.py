@@ -30,8 +30,8 @@ class BillingInfo(models.Model):
 
 class PaymentInfo(models.Model):
     card_number = models.PositiveIntegerField()
-    expiration_month = models.IntegerField()
-    expiration_year = models.IntegerField()
+    expiration_date = models.CharField(max_length = 7)
+    security_number = models.IntegerField()
 
     user = models.ForeignKey(User, related_name = 'paymentInfo', on_delete = models.CASCADE)
     billingInfo = models.OneToOneField(BillingInfo, related_name = 'paymentInfo', on_delete = models.CASCADE)

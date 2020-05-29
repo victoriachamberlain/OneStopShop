@@ -68,8 +68,10 @@ def editUser(request, userId):
     if request.session['user_id'] != userId:
         return redirect('/home')
 
+    user = User.objects.filter(id = request.sesion['user_id'])[0]
     context = {
-        'user': User.objects.filter(id = request.session['user_id'])[0]
+        'user': user,
+        'shipping_addresses': ShippingInfo.objects.filter(user = user),
     }
     return render(request, 'editUser.html', context) # Renders the page and passes in the user object
 
