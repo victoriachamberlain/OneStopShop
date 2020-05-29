@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body class="text-light bg-dark">
+    <h6><a href="user/">Create Account or Login<a></h6>
+    <div class="col-8" style="margin: auto;">
+        <div class="usertable">
+            <form action="/addUser" method="POST">
+            {% csrf_token %}
+            <div class="table" style="margin: auto">
+                <h1>Dojo eCommerce</h1>
+                <a href="/dashboard" class="btn btn-success" role="button" style="position: right;">Shopping Cart</a>
+                </table>
+            </div>
+        </div>
+            </form>
+        <form>         
+            <div class="bottomImages">
+                <h3>Items</h3>
+                <!-- sure there is a better way but needed a visual -->
+                <div class="items">
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                    <img class="col"style="width: 8%;"src="https://www.logolynx.com/images/logolynx/30/30e85a8b425c27e64feb9832decfd757.png" alt="Logo">
+                    <h11>19.99</h11>
+                </div>
+            </form> 
+        </div>
+            <form>         
+                <div class="pageNav">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            </li>
+                            <!-- i'm sure we can use jinja to populate the number of pages -->
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                            </li>
+                        </ul>
+                        </nav>
+                </form> 
+        </div>
+    </div>
+</body>
+</html>
