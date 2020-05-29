@@ -30,10 +30,16 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# CORS_ORIGIN_WHITELIST = [
+#     "https://api.printful.com",
+#     "http://localhost:8000"
+# ]
+
 INSTALLED_APPS = [
-    # 'adminApp',
+    'adminApp',
     'loginApp',
     'productsApp',
+    # 'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'OneStopShop.urls'
@@ -76,21 +83,28 @@ WSGI_APPLICATION = 'OneStopShop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# Using MySQL database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': './my.cnf',
-            # To set SQL mode
-            'init_command': "SET sql_mode='STRIC_TRANS_TABLES'",
-            # Setting table default as INNODB
-            'init_command': 'SET default_storage_engine=INNODB',
-            # Setting Isolation level
-            'isolation_level': 'read committed',
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# Using MySQL database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': '/my.cnf',
+#             # To set SQL mode
+#             'init_command': "SET sql_mode='STRIC_TRANS_TABLES'",
+#             # Setting table default as INNODB
+#             'init_command': 'SET default_storage_engine=INNODB',
+#             # Setting Isolation level
+#             'isolation_level': 'read committed',
+#         },
+#     }
+# }
+
 
 
 # Password validation
@@ -117,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/California'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

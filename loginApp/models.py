@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 from django.utils.dateparse import parse_date
 import re
+from productsApp import *
 
 class UserManager(models.Manager):
     def registration_validation(self, postData):
@@ -37,10 +38,12 @@ class UserManager(models.Manager):
             errors['email'] = "Email already registered! Please use another email address."
 
         #Birthday validation
-        if parse_date(postData['birthdayReg']) > date.today():
-            errors['birthdayReg'] = "You must enter a date in the past!"
-        elif parse_date(postData['birthdayReg']) >= date(date.today().year - 13, date.today().month, date.today().day):
-            errors['birthdayReg'] = "You must be older than 13 to register!"
+        if postData['birth_date'] == "":
+            errors['birth_date'] = "This field cannot be left empty!"
+        elif parse_date(postData['birth_date']) > date.today():
+            errors['birth_date'] = "You must enter a date in the past!"
+        elif parse_date(postData['birth_date']) >= date(date.today().year - 13, date.today().month, date.today().day):
+            errors['birth_date'] = "You must be older than 13 to register!"
 
         #Password validation
         if len(postData['password']) == 0:
@@ -54,7 +57,7 @@ class UserManager(models.Manager):
 
         return errors
 
-    def update_validation(self, postData):
+    def update_info_validation(self, postData):
         EMAIL_REGEX = re.compile(r'^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$')
         errors = {}
 
@@ -84,6 +87,21 @@ class UserManager(models.Manager):
 
         return errors
 
+    def update_password_validation(self, postData):
+        PW_REGEX = re.compile(r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,32}$")
+        errors = {}
+
+        if len(postData['updated_password']) == 0:
+            errors['updated_password'] = "This field cannot be left empty!"
+        elif len(postData['updated_password']) < 8:
+            errors['updated_password'] = "The password must be a minimum of 8 characters!"
+        elif not PW_REGEX.match(postData['updated_password']):
+            errors['updated_password'] = "Password must contain a minimum of 1 uppercase, 1 lowercase, 1 number, and 1 special character!"
+        elif postData['updated_password'] != postData['updated_confirm_password']:
+            errors['updated_password'] = "Passwords do not match!"
+
+        return errors
+
 
 class User(models.Model):
     first_name = models.CharField(max_length = 30)
@@ -92,6 +110,8 @@ class User(models.Model):
     birth_date = models.DateField()
     password = models.CharField(max_length = 200)
 
+    # one to one relationships with wishlist and shopping cart
+    # one to many relationhip with order
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
