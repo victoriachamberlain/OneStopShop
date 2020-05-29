@@ -1,6 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
-import requests
 
 def index(request):
     context = {
@@ -34,7 +33,7 @@ def products(request, categoryName=''):
         #     'product': productList,
         #     'categories': categories,
         # }
-        return render(request, 'productsListing.html', context) # change the name of the html to something different
+        return render(request, 'productsListing.html') # change the name of the html to something different
 
 def singleProduct(request, productId):
     context = {
@@ -80,7 +79,27 @@ def showPayment(request, userId): #productId
     return render(request, "payment.html", context)# render payment page with all of the items from shopping cart
 
 def processPayment(request, userId):
-    # code to process payment
+        
+    # errors = User.objects.tripValidator(request.POST)
+    
+    # if len(errors) > 0:
+    #     for key, value in errors.items():
+    #         messages.error(request, value, extra_tags=key)
+    #     return redirect(f"/dashboard/trip/new")
+    userid = request.session['user_id']   
+    user = User.objects.filter(id = userid)[0]
+    pay = ShippingInfo.objects.create(
+        userID = user,
+        first_name = request.POST['destination'],
+        last_name = request.POST['startDate'],
+        address = request.POST['endDate'],
+        adress2 = request.POST['planTrip'],
+        city = request.POST['destination'],
+        state = request.POST['startDate'],
+        zipcode = request.POST['endDate'],
+    )
+    return redirect("/dashboard")
+
     return HttpResponse('process payment') # process the payment and redirect to the receipt page
 
 

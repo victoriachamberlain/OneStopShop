@@ -8,10 +8,30 @@
         <link rel="stylesheet" href="{% static 'style.css' %}">
         <title>Order Page</title>
     </head>
-    <body class="text-light bg-dark">
+    <body class="bg-white text-dark">
         <div class="col-8" style="margin: auto;">
+            <form action="/addUser" method="POST">
+                {% csrf_token %}
+                    <div class="table" style="margin: auto">
+                        <h1>Your Orders</h>
+                        <table class="table table-dark">
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <!-- will change later specifically to item price quantity and total price with an update link in quantity -->
+                            {% for user in Users %}
+                            <tr>
+                                <td>{{user.first_name}}</td>
+                                <td>{{user.last_name}}</td>
+                                <td>{{user.email_address}}</td>
+                                <td>{{user.age}}</td>
+                            </tr>
+                            {% endfor %}
+                    </div>
+            </form>
             <div class="usertable">
-                <form action="/shoppingCart" method="POST">
+                        <form action="/shoppingCart" method="POST">
                     {% csrf_token %}
                         <div class="Shipping Info">
                             <h1>Shipping information</h1>
@@ -64,25 +84,7 @@
                                 </div>
                             </div>
                         </form> 
-                <form action="/addUser" method="POST">
-                {% csrf_token %}
-                    <div class="table" style="margin: auto">
-                        <h1>Your Orders</h>
-                        <table class="table table-dark">
-                            <th>Products</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <!-- will change later specifically to item price quantity and total price with an update link in quantity -->
-                            {% for user in Users %}
-                            <tr>
-                                <td>{{user.first_name}}</td>
-                                <td>{{user.last_name}}</td>
-                                <td>{{user.email_address}}</td>
-                                <td>{{user.age}}</td>
-                            </tr>
-                            {% endfor %}
-                    </div>
+
             </div>
         </div>
     </body>
